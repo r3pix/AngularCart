@@ -1,23 +1,25 @@
 <div *ngIf="cartItems.length === 0" class="alert alert-info">Koszyk jest pusty.</div>
 
   <ul *ngIf="cartItems.length > 0" class="list-group">
-      <li class="list-group-item" *ngFor="let item of map.entries()">
+      <li class="list-group-item" *ngFor="let item of array">
 
-        <div class="row">
-          <div class="col">
-            <app-cart-item [cartItem]="getItem(item[0])" [quantity]="item[1]"></app-cart-item>
+         <div class="row">
+          <div class="col-sm">
+            <app-cart-item [cartItem]="item"></app-cart-item>
           </div>
 
-          <div class="col-sm-2">
-            <mat-icon>delete</mat-icon>
+          <div class="col-sm">
+            <button mat-icon-button (click)="onDelete(item.id)"><mat-icon>delete</mat-icon></button>
           </div>
-        </div>
+        </div> 
 
       </li>
 
 
     <li class="list-group-item active">
-      <strong>Total</strong> {{ calcCartTotal | currency:'PLN' }}
+      <strong>Suma</strong> {{ calcCartTotal | currency:'PLN' }}
     </li>
-    <button (click)="show()">poka ile jest kazdego</button>
+    <span *ngIf="cartItems.length >0 && authService.isLoggedIn">
+      <button class="btn btn-outline-secondary" (click)="openDialogg()" style="width: 100%;" >Złóz zamówienie</button>
+    </span> 
 </ul>

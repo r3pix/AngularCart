@@ -28,6 +28,15 @@ import { AuthService } from "./services/auth.service";
 import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddProductComponent } from './components/shopping-cart/add-product/add-product/add-product.component';
+import { OrderComponent } from './components/shopping-cart/order/order.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { OrderHistoryComponent } from './components/shopping-cart/order-history/order-history.component';
+import { MatTableModule } from '@angular/material/table';
+import { PropertiesComponent } from './components/shopping-cart/properties/properties.component';
+import { OrderPropertiesComponent } from './components/shopping-cart/order-properties/order-properties.component';
+import {MatButtonModule} from '@angular/material/button';
+import {NgxPrintModule} from 'ngx-print';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +53,11 @@ import { AddProductComponent } from './components/shopping-cart/add-product/add-
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    AddProductComponent
+    AddProductComponent,
+    OrderComponent,
+    OrderHistoryComponent,
+    PropertiesComponent,
+    OrderPropertiesComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +71,11 @@ import { AddProductComponent } from './components/shopping-cart/add-product/add-
      AngularFireStorageModule,
      AngularFireDatabaseModule,
      BrowserAnimationsModule,
-     MatIconModule
+     MatIconModule,
+     MatDialogModule,
+     MatTableModule,
+     MatButtonModule,
+     NgxPrintModule
   ],
    providers: [AuthService],
   bootstrap: [AppComponent]

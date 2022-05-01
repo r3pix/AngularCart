@@ -5,8 +5,8 @@
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-dark" [routerLink]="['/shop']">Sklep</a>
      <a *ngIf="checkAdminRights()" class="p-2 text-dark" [routerLink]="['/addProduct']" href="#">Dodaj produkt</a>
-    <!-- <-- <a class="p-2 text-dark" href="#">Support</a>
-    <a class="p-2 text-dark" href="#">Pricing</a> --> 
+     <span *ngIf="checkLogin()"><a class="p-2 text-dark" [routerLink]="['/orderHistory']">Historia Zamówień</a></span>
+    <!-- <a class="p-2 text-dark" href="#">Pricing</a> -->
   </nav>
   <span *ngIf="!checkLogin()">
     <a class="btn btn-primary" [routerLink]="['/login']">Zaloguj</a>

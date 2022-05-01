@@ -83,7 +83,7 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null;
   }
   // Sign in with Google
   GoogleAuth() {
@@ -134,6 +134,7 @@ export class AuthService {
         let dataa:any = doc.data();
         localStorage.setItem('isAdmin', dataa.isAdmin)
         localStorage.setItem('uid', doc.id)
+        localStorage.setItem('name', dataa.name)
       } else {
         console.log("There is no document!");
       }
@@ -148,6 +149,7 @@ export class AuthService {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       localStorage.removeItem('uid');
+      localStorage.removeItem('name');
       localStorage.removeItem('isAdmin');
       this.router.navigate(['login']);
     });

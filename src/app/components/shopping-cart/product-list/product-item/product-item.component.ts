@@ -4,6 +4,8 @@ import { MessengerService } from 'src/app/services/messenger.service'
 import { CartService } from 'src/app/services/cart.service'
 import { WishlistService } from 'src/app/services/wishlist.service';
 import { EventEmitter } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { PropertiesComponent } from '../../properties/properties.component';
 
 @Component({
   selector: 'app-product-item',
@@ -20,7 +22,8 @@ export class ProductItemComponent implements OnInit {
   constructor(
     private msg: MessengerService,
     private cartService: CartService,
-    private wishlistService: WishlistService
+    private wishlistService: WishlistService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -44,5 +47,16 @@ export class ProductItemComponent implements OnInit {
     this.wishlistService.removeFromWishlist(this.productItem.id).subscribe(() => {
       this.addedToWishlist = false;
     })
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PropertiesComponent, {
+      width: '600px',
+       data: {product: this.productItem},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // this.animal = result;
+    });
   }
 }

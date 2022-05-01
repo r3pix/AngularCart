@@ -24,7 +24,7 @@ export class ProductService {
 
     collection.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) =>{
-        //console.log(doc.id, '=>', doc.data());
+        console.log(doc.id, '=>', doc.data());
         this.products.push(new Product(doc.id, doc.data().name,doc.data().description, parseFloat(doc.data().price), doc.data().imageUrl));
       })
     });

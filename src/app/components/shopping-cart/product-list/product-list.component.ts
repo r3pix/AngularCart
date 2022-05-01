@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 
 import { ProductService } from 'src/app/services/product.service'
 import { Product } from 'src/app/models/product';
@@ -10,7 +10,7 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
 
   products;
   productList: Product[] = []
@@ -41,6 +41,10 @@ export class ProductListComponent implements OnInit {
     this.wishlistService.getWishlist().subscribe(productIds => {
       this.wishlist = productIds
     })
+  }
+
+  ngOnDestroy(): void {
+    this.productList.length =0;
   }
 
   addItem(event: any){

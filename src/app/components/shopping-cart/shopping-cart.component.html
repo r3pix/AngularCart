@@ -8,6 +8,6 @@
   </div>
 
   <div class="col-md-2">
-    <app-cart [cartItems]="productList" [map]="productMap"></app-cart>
+    <app-cart [cartItems]="productList" [array]="productArray" (openDialog)="openDialog($event)" (deleteEvent)="onDelete($event)" ></app-cart>
   </div>
 </div>
