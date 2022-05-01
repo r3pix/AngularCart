@@ -1,9 +1,23 @@
-<ul class="list-group">
-    <li class="list-group-item" *ngFor="let i of [1,2,3,4,5]">
-        <app-cart-item></app-cart-item>
-    </li>
+<div *ngIf="cartItems.length === 0" class="alert alert-info">Koszyk jest pusty.</div>
+
+  <ul *ngIf="cartItems.length > 0" class="list-group">
+      <li class="list-group-item" *ngFor="let item of map.entries()">
+
+        <div class="row">
+          <div class="col">
+            <app-cart-item [cartItem]="getItem(item[0])" [quantity]="item[1]"></app-cart-item>
+          </div>
+
+          <div class="col-sm-2">
+            <mat-icon>delete</mat-icon>
+          </div>
+        </div>
+
+      </li>
+
 
     <li class="list-group-item active">
-        <strong>Suma: {{1000 | currency:'PLN'}}</strong>
+      <strong>Total</strong> {{ calcCartTotal | currency:'PLN' }}
     </li>
+    <button (click)="show()">poka ile jest kazdego</button>
 </ul>

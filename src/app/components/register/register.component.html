@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="guest-form-card card">
+
+      <div class="card-header text-center">
+        <h2>Zarejestruj się</h2>
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+          <div class="form-group">
+            <label for="name">Imie i nazwisko</label>
+            <input
+              id="name"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': registerForm.get('name').touched && registerForm.get('name').invalid }"
+              formControlName="name"
+            />
+            <span class="invalid-feedback">Imie i nazwisko nie może być puste.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': registerForm.get('email').touched && registerForm.get('email').invalid }"
+              formControlName="email"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="registerForm.get('email').hasError('required')">Email nie może być pusty.</span>
+              <span *ngIf="registerForm.get('email').hasError('email')">Email must be valid.</span>
+            </span>
+          </div>
+
+
+          <div class="form-group">
+            <label for="password">Hasło</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': registerForm.get('password').touched && registerForm.get('password').invalid }"
+              formControlName="password"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="registerForm.get('password').hasError('required')">Hasło nie może być puste.</span>
+              <span *ngIf="registerForm.get('password').hasError('symbol')">Hasło musi zawierać @</span>
+              <span *ngIf="registerForm.get('password').hasError('minlength')">Hasło musi mieć minimalną długość 4</span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Potwierdź hasło</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').invalid }"
+              formControlName="confirmPassword"
+            />
+            <span class="invalid-feedback">Hasła się nie zgadzają.</span>
+          </div>
+
+          <button class="btn btn-primary btn-block" [disabled]="registerForm.invalid" >Zarejestruj się</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
