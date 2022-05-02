@@ -54,7 +54,7 @@ export class OrderComponent implements OnInit {
     this.registerForm.get('number').value,
     this.registerForm.get('postalCode').value,
     this.data.productList, this.registerForm.get('street').value,
-    this.calcCartTotal,localStorage.getItem('uid')));
+    this.calcCartTotal,localStorage.getItem('uid'),0));
 
     this.dialogRef.close(true);
   }

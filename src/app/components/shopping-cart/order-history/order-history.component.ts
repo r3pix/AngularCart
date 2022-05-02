@@ -6,6 +6,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Observable } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { OrderPropertiesComponent } from '../order-properties/order-properties.component';
+import { ChangeOrderStatusComponent } from '../change-order-status/change-order-status.component';
 
 @Component({
   selector: 'app-order-history',
@@ -45,7 +46,7 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
 
   //orders: Order[]=[];
 
-  displayedColumns = ['position','city', 'number','postalCode', 'street', 'total', 'actions'];
+  displayedColumns = ['position','city', 'number','postalCode', 'street', 'total','status', 'actions'];
   dataSource;
 
 
@@ -59,4 +60,41 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
       // this.animal = result;
     });
   }
+
+  checkAdminRights(){
+    if(localStorage.getItem('isAdmin')==='true'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  resolveStatus(element:any){
+    if(element.status===0){
+      return 'Złożone';
+    }
+    else if(element.status===1){
+      return 'W trakcie realizacji';
+    }
+    else if(element.status===2){
+      return 'Zakończone';
+    }
+    else{
+      return 'Błąd';
+    }
+  }
+
+  changeStatus(element: any){
+    const dialogRef = this.dialog.open(ChangeOrderStatusComponent, {
+      width: '500px',
+       data: {orderId: element.id, status: element.status},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // this.animal = result;
+    });
+  }
+
+
 }

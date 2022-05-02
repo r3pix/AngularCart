@@ -8,6 +8,7 @@ export class Order{
     street: string;
     total: number;
     uid: string;
+    status: number;
 
     constructor(id:any,city: string,
         name: string,
@@ -16,7 +17,8 @@ export class Order{
         products: any[],
         street: string,
         total: number,
-        uid: string)
+        uid: string,
+        status: number)
     {
         this.city = city;
         this.number = number;
@@ -26,5 +28,6 @@ export class Order{
         this.street = street;
         this.total = total;
         this.uid = uid;
+        this.status = status;
     }
 }

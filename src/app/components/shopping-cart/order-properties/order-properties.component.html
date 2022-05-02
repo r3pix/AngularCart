@@ -20,10 +20,11 @@
                     <div class="form-group"><strong>Miasto:</strong> {{data.order.city }}</div>
             
             
-                    <label for="products"><strong>Produkty</strong></label>
+                            
+                    <label for="products"><strong>Produkty:</strong></label>
                     <ul>
-                        <li class="list-group-item" *ngFor="let item of parsedProducts"> {{ item.name }} <strong>{{ item.price | currency:'PLN' }}</strong></li>
-                        <li class="list-group-item" > Suma: <strong>{{ data.order.total | currency:'PLN' }}</strong></li>
+                        <li class="list-group-item" *ngFor="let item of productArray"> {{ item.name }} x {{item.quantity}}: <strong>{{(item.price *item.quantity) | currency:'PLN' }}</strong></li>
+                        <li class="list-group-item" > Suma: <strong>{{ calcCartTotal | currency:'PLN' }}</strong></li>
                     </ul>
             
                 </div>

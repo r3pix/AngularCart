@@ -55,7 +55,7 @@ export class ShoppingCartComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(OrderComponent, {
-      width: '1000px',
+      width: '500px',
        data: {productList: this.productList, productArray: this.productArray},
     });
 
