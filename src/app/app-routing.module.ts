@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component'
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component'
 import { AddProductComponent } from './components/shopping-cart/add-product/add-product/add-product.component'
 import { OrderHistoryComponent } from './components/shopping-cart/order-history/order-history.component'
+import { HelpComponent } from './components/help/help.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/shop', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'shop', component: ShoppingCartComponent },
   { path: 'addProduct', component: AddProductComponent },
   { path: 'orderHistory', component: OrderHistoryComponent },
+  { path: 'help', component: HelpComponent },
   { path: '**', component: PageNotFoundComponent }
 ]
 

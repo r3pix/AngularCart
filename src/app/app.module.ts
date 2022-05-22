@@ -38,6 +38,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {NgxPrintModule} from 'ngx-print';
 import { ChangeOrderStatusComponent } from './components/shopping-cart//change-order-status/change-order-status.component';
 import { MatSelectModule } from '@angular/material/select';
+import { HelpComponent } from './components/help/help.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -60,7 +62,8 @@ import { MatSelectModule } from '@angular/material/select';
     OrderHistoryComponent,
     PropertiesComponent,
     OrderPropertiesComponent,
-    ChangeOrderStatusComponent
+    ChangeOrderStatusComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,8 @@ import { MatSelectModule } from '@angular/material/select';
      MatTableModule,
      MatButtonModule,
      NgxPrintModule,
-     MatSelectModule
+     MatSelectModule,
+     MatCardModule
   ],
    providers: [AuthService],
   bootstrap: [AppComponent]
